@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Le To-Do List</title>
+		<script> 
+            function addItemImportant() {
+                var inputtext = document.getElementById("important").value;
+                if(inputtext.startsWith('/chinese')) {
+                   var subtitles = ['reading', 'writing', 'online', 'cards'];
+                   for(var i = 0; i < subtitles.length; i++) {
+                      var newItem = document.createElement("div");
+                      if(inputtext.startsWith('/')) {
+                          inputtext = inputtext.substring(1);
+                      }
+                      newItem.innerHTML = inputtext + " " + subtitles[i];
+                      newItem.onclick = removeItemImportant;
+                      document.getElementById("importantList").appendChild(newItem);
+                   }
+                }
+                else if (inputtext.startsWith("/zik isa dummy")) {
+                    for (var i = 0; i < 100; i++) {
+                        var newItem = document.createElement("div");
+                        newItem.innerHTML = "zik isa dummy";
+                        newItem.onclick = removeItemImportant;
+                        document.getElementById("importantList").appendChild(newItem);
+                    }
+                }
+                else if(inputtext.startsWith('/shitese')) {
+                   var subtitles = ['reading', 'writing', 'online', 'cards'];
+                   for(var i = 0; i<subtitles.length; i++) {
+                      var newItem = document.createElement("div");
+                      if(inputtext.startsWith('/')) {
+                          inputtext = inputtext.substring(1);
+                   }
+                      newItem.innerHTML = inputtext + " " + subtitles[i];
+                      newItem.onclick = removeItemImportant;
+                      document.getElementById("importantList").appendChild(newItem);
+                   }
+                }
+                else if (inputtext.startsWith('/school')) {
+                    var subtitles = ['violin', 'math', 'history', 'science', 'writing', 'vocab', 'piano', 'diary'];
+                   for(var i = 0; i<subtitles.length; i++) {
+                      var newItem = document.createElement("div");
+                      newItem.innerHTML = subtitles[i];
+                      newItem.onclick = removeItemImportant;
+                      document.getElementById("importantList").appendChild(newItem);
+                   }
+                } else {
+                   var newItem = document.createElement("div");
+                   newItem.innerHTML = inputtext;
+                   newItem.onclick = removeItemImportant;
+                   document.getElementById("importantList").appendChild(newItem);
+                }
+                document.getElementById("important").value = '';
+            }
+            function removeItemImportant() {
+	           document.getElementById("importantList").removeChild(this);
+            }
+            function addItem() {
+	           var newItem = document.createElement("div");
+               newItem.innerHTML = document.getElementById("regular").value;
+	           newItem.onclick = removeItem;
+	           document.getElementById("OtherList").appendChild(newItem);
+               document.getElementById("regular").value = '';
+            }
+            function removeItem() {
+	           document.getElementById("OtherList").removeChild(this);
+            }
+            function addItemReminder() {
+	           var newItem = document.createElement("div");
+               newItem.innerHTML = document.getElementById("reminder").value;
+	           newItem.onclick = removeItemReminder;
+	           document.getElementById("RemindingList").appendChild(newItem);
+               document.getElementById("reminder").value = '';
+            }
+            function removeItemReminder() {
+	           document.getElementById("RemindingList").removeChild(this);
+            }
+            function onNameChanged() {
+               var name = document.getElementById('name').value;
+               document.getElementsByTagName('title')[0].text = name + "'s To-Do List";
+            }
+            function onKeyPressed(event, element) {
+            	if (event.keyCode === 13) {
+            		if (element.id === "important"){
+            			addItemImportant();
+            		}
+            		if (element.id === "regular"){
+            			addItem();
+            		}
+            		if (element.id === "reminder"){
+            			addItemReminder();
+            		}
+            	}
+            }
+            Array.prototype.slice.call(document.getElementsByTagName('input')).forEach(function(element){element.addEventListener('keypress', function(event){console.log(event.currentTarget.value)})})
+        </script>
+        <style>
+            html {
+                background-color: dimgrey;
+            }
+            input {
+                background-color: grey;
+                border-color: grey;
+            }
+        </style>
+	</head>
+	<body>
+            <p>To-Do List : D : D : D</p>
+            <br/>
+            <span>My name is </span>
+            <input type="text" placeholder="Your Name" id="name" onkeyup="onNameChanged()" />
+            <br/>
+            <br/>
+            <input type="text" id="important" placeholder="Type Important Things Here" onkeypress="onKeyPressed(event, this)"/>
+            <input type="button" value="Add Important Item" onclick="addItemImportant();"/>
+            <br/>
+            <div id="importantList">
+            </div>
+            <br/>
+            <input type="text" id="regular" placeholder="Type Other Things Here" onkeypress="onKeyPressed(event, this)"/>
+            <input type="button" value="Add Other Item" onclick="addItem();"/>
+            <br/>
+            <div id="OtherList">
+            </div>
+            <br/>
+            <input type="text" id="reminder" placeholder="Type Reminders Here" onkeypress="onKeyPressed(event, this)"/>
+            <input type="button" value="Add Reminder" onclick="addItemReminder();"/>
+            <br/>
+            <div id="RemindingList">
+            </div>
+	</body>
+	<script type="text/javascript">
+		// Array.prototype.slice.call(document.getElementsByTagName('input')).forEach(function(element){element.addEventListener('keypress', function(event){console.log(event.currentTarget.value)})})
+	</script>
+</html>
