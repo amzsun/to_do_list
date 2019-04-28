@@ -38,7 +38,7 @@
                    }
                 }
                 else if (inputtext.startsWith('/school')) {
-                    var subtitles = ['violin', 'math', 'history', 'science', 'writing', 'vocab', 'piano', 'diary'];
+                   var subtitles = ['violin', 'math', 'history', 'science', 'writing', 'vocab', 'piano', 'diary'];
                    for(var i = 0; i<subtitles.length; i++) {
                       var newItem = document.createElement("div");
                       newItem.innerHTML = subtitles[i];
@@ -58,27 +58,32 @@
             }
             function addItem() {
 	           var newItem = document.createElement("div");
-               newItem.innerHTML = document.getElementById("regular").value;
+              newItem.innerHTML = document.getElementById("regular").value;
 	           newItem.onclick = removeItem;
 	           document.getElementById("OtherList").appendChild(newItem);
-               document.getElementById("regular").value = '';
+              document.getElementById("regular").value = '';
             }
             function removeItem() {
 	           document.getElementById("OtherList").removeChild(this);
             }
             function addItemReminder() {
 	           var newItem = document.createElement("div");
-               newItem.innerHTML = document.getElementById("reminder").value;
+              newItem.innerHTML = document.getElementById("reminder").value;
 	           newItem.onclick = removeItemReminder;
 	           document.getElementById("RemindingList").appendChild(newItem);
-               document.getElementById("reminder").value = '';
+              document.getElementById("reminder").value = '';
             }
             function removeItemReminder() {
 	           document.getElementById("RemindingList").removeChild(this);
             }
             function onNameChanged() {
                var name = document.getElementById('name').value;
-               document.getElementsByTagName('title')[0].text = name + "'s To-Do List";
+               if (name) {
+                  document.getElementsByTagName('title')[0].text = name[0].toUpperCase() + name.substring(1) + "'s To-Do List";
+               }
+               else {
+                  document.getElementsByTagName('title')[0].text = "Le To-Do List";
+               }
             }
             function onKeyPressed(event, element) {
             	if (event.keyCode === 13) {
