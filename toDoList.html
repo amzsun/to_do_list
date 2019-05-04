@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Le To-Do List</title>
-		<script> 
+		<script>
             function addItemImportant() {
                 var inputtext = document.getElementById("important").value;
                 if(inputtext.startsWith('/chinese')) {
@@ -45,7 +45,25 @@
                       newItem.onclick = removeItemImportant;
                       document.getElementById("importantList").appendChild(newItem);
                    }
-                } else {
+                }
+                else if (inputtext.startsWith('/rewardMeee')) {
+                  for (var i = 0; i < 1000; i++) {
+                        var rewards = ["yeet!", "yee!", "yay!", "yeah!", "yeet", "yee", "yay", "yeah","great job", "awesome job!", "nice job!", "great work!", "awesome work!", "nice work!", "good work!", "nice job!", "great job", "awesome job", "nice job", "great work", "awesome work", "nice work", "good work", "nice job"];
+                        var newItem = document.createElement("div");
+                        newItem.innerHTML = rewards[Math.floor(Math.random() * 24)];
+                        newItem.onclick = removeItemImportant;
+                        document.getElementById("importantList").appendChild(newItem);
+                    }
+                }
+                else if (inputtext.startsWith('/prokiller')) {
+                    for (var i = 0; i < 2000; i++) {
+                        var newItem = document.createElement("div");
+                        newItem.innerHTML = "(^_^) < ima nub!('_') < ima nub! (#_') < ima nub! (#_#) < ima nub!($.$) < ima nub!(' _ ')ima nub!";
+                        newItem.onclick = removeItemImportant;
+                        document.getElementById("importantList").appendChild(newItem);
+                    }
+                }
+                else {
                    var newItem = document.createElement("div");
                    newItem.innerHTML = inputtext;
                    newItem.onclick = removeItemImportant;
